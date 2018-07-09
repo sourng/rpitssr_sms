@@ -30,6 +30,8 @@ class Login extends CI_Controller
             redirect(base_url() . 'index.php?student/dashboard', 'refresh');
         if ($this->session->userdata('parent_login') == 1)
             redirect(base_url() . 'index.php?parents/dashboard', 'refresh');
+        if ($this->session->userdata('enroll_login') == 1)
+        redirect(base_url() . 'index.php?enroll/dashboard', 'refresh');
         
         
         $config = array(
@@ -61,6 +63,7 @@ class Login extends CI_Controller
                 redirect(base_url() . 'index.php?student/dashboard', 'refresh');
             if ($this->session->userdata('parent_login') == 1)
                 redirect(base_url() . 'index.php?parents/dashboard', 'refresh');
+                
         }
         
     }
