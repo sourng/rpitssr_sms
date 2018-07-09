@@ -50,22 +50,60 @@ class Admin extends CI_Controller
         if ($this->session->userdata('admin_login') != 1)
             redirect('login', 'refresh');
         if ($param1 == 'create') {
-			$data['khname']        = $this->input->post('khname');
-            $data['name']        = $this->input->post('name');
-            $data['birthday']    = $this->input->post('birthday');
-            $data['sex']         = $this->input->post('sex');
-            $data['address']     = $this->input->post('address');
-            $data['phone']       = $this->input->post('phone');
-            $data['email']       = $this->input->post('email');
-            $data['password']    = $this->input->post('password');
-            $data['father_name'] = $this->input->post('father_name');
-            $data['mother_name'] = $this->input->post('mother_name');
-            $data['class_id']    = $this->input->post('class_id');
-            $data['roll']        = $this->input->post('roll');
-            $this->db->insert('student', $data);
+
+            //$data['class_id'] = $this->input->post('class_id');
+
+			$data['txt_family_kh']        = $this->input->post('txt_family_kh');
+            $data['txt_first_kh']        = $this->input->post('txt_first_kh');
+            $data['txt_family_en']    = $this->input->post('txt_family_en');
+            $data['txt_first_en']         = $this->input->post('txt_first_en');
+            $data['cbo_sex']     = $this->input->post('cbo_sex');
+            $data['txt_birthdate']       = $this->input->post('txt_birthdate');
+            $data['txt_national_id']       = $this->input->post('txt_national_id');
+            $data['txt_institution_student_id']    = $this->input->post('txt_institution_student_id');
+            $data['txt_dependants'] = $this->input->post('txt_dependants');
+            $data['cbo_marital'] = $this->input->post('cbo_marital');
+            $data['txt_travel_distance']    = $this->input->post('txt_travel_distance');
+            $data['cbo_transport_method']        = $this->input->post('cbo_transport_method');
+            $data['txt_resident_line1'] = $this->input->post('txt_resident_line1');
+            $data['cbo_province'] = $this->input->post('cbo_province');
+            $data['cbo_district'] = $this->input->post('cbo_district');
+            $data['cbo_commune'] = $this->input->post('cbo_commune');
+            $data['txt_parent_name'] = $this->input->post('txt_parent_name');
+            $data['txt_parent_phone'] = $this->input->post('txt_parent_phone');
+            $data['txt_parent_email'] = $this->input->post('txt_parent_email');
+            $data['rd_parent_address'] = $this->input->post('rd_parent_address');
+            $data['cbo_general_education'] = $this->input->post('cbo_general_education');
+            $data['rd_enrol_ge'] = $this->input->post('rd_enrol_ge');            
+            $data['cbo_emp_status'] = $this->input->post('cbo_emp_status');
+            $data['txt_job_title'] = $this->input->post('txt_job_title');
+            $data['cbo_emp_remun'] = $this->input->post('cbo_emp_remun');
+            $data['txt_personal_income'] = $this->input->post('txt_personal_income');
+            $data['cbo_emp_type'] = $this->input->post('cbo_emp_type');
+            $data['txt_family_income'] = $this->input->post('txt_family_income');
+            $data['cbo_emp_prevent_reason'] = $this->input->post('cbo_emp_prevent_reason');
+            $data['rd_orphan'] = $this->input->post('rd_orphan');
+            $data['cbo_disability_type'] = $this->input->post('cbo_disability_type');
+            $data['cbo_disability_happen'] = $this->input->post('cbo_disability_happen');
+            $data['cbo_minority'] = $this->input->post('cbo_minority');
+    
+            $data1['txt_coursename'] = $this->input->post('txt_coursename');
+            $data1['cbo_istvet'] = $this->input->post('cbo_istvet');
+            $data1['cbo_program_type'] = $this->input->post('cbo_program_type');
+            $data1['txt_course_year'] = $this->input->post('txt_course_year');
+            $data1['txt_school_name'] = $this->input->post('txt_school_name');
+            $data1['txt_school_location'] = $this->input->post('txt_school_location');         
+
+                        
+            $image_id = uniqid() . '.jpg';
+            $data['file_photo'] = $image_id;//$this->input->post('file_photo');
+
+            $this->db->insert('my_student', $data);
+            $this->db->insert('my_student_course', $data1);
             $student_id = mysql_insert_id();
-            move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $student_id . '.jpg');
-            $this->email_model->account_opening_email('student', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
+
+            move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $image_id);
+            //$this->email_model->account_opening_email('student', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
             redirect(base_url() . 'index.php?admin/student/' . $data['class_id'], 'refresh');
         }
         if ($param2 == 'do_update') {
