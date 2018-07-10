@@ -173,7 +173,7 @@
                 <div class="box-content">                    
                 	<?php echo form_open('admin/student/create/' , array('class' => 'form-horizontal validatable', 'enctype' => 'multipart/form-data'));?>
                         <div class="padded">
-<<<<<<< HEAD
+
                             <div class="control-group">
                                 <label class="control-label">ឈ្មោះខ្មែរ</label>
                                 <div class="controls">
@@ -273,7 +273,7 @@
                                 </div>
                             </div>
                         </div>
-=======
+
                             <table>
                                 <tr>
                                     <td><label for="fname">គោត្តនាម</label></td>
@@ -636,7 +636,7 @@
                                
                             </table>
                         </div>    
->>>>>>> 87cfeadc48ec2bc16de5118465769096df0c62a6
+
                         <div class="form-actions">
                             <button type="submit" class="btn btn-gray"><?php echo get_phrase('add_student');?></button>
                         </div>

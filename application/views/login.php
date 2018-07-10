@@ -100,6 +100,7 @@
                                             <option value="teacher"><?php echo get_phrase('teacher');?></option>
                                             <option value="student"><?php echo get_phrase('student');?></option>
                                             <option value="parent"><?php echo get_phrase('parent');?></option>
+                                             <option value="enroll"><?php echo get_phrase('enroll');?></option>
                                         </select>
                                     </div>
                                     <style>
