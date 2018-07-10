@@ -80,9 +80,16 @@
                             <tbody>
                                 <?php $count = 1;foreach($students as $row):?>
                                 <tr>
-                                    <td class="span1"><?php echo $row['roll'];?></td>
+                                    <td class="span1" style="width: 100px;">
+                                        <a  data-toggle="modal" href="#modal-form" onclick="modal('student_profile',<?php echo $row['student_id'];?>)" class="btn btn-default btn-small">
+                                            <i class="icon-user"></i> <?php echo $row['roll'];?>
+                                        </a>
+
+                                      
+                                            
+                                        </td>
                                     <td><div class="avatar"><img src="<?php echo $this->crud_model->get_image_url('student',$row['student_id']);?>" class="avatar-medium" /></div></td>
-                                    <td><?php echo $row['name'];?></td>
+                                    <td style="width: 200px;"><?php echo $row['name'];?></td>
                                     <td><?php echo $row['address'];?></td>
                                     <td><?php echo $row['email'];?></td>
                                     <td align="center" class="span5">
@@ -91,9 +98,7 @@
                                         <a  data-toggle="modal" href="#modal-form" onclick="modal('student_profile',<?php echo $row['student_id'];?>)" class="btn btn-default btn-small">
                                             <i class="icon-user"></i> <?php echo get_phrase('profile');?>
                                         </a>
-                                        <a  data-toggle="modal" href="#modal-form" onclick="modal('student_academic_result',<?php echo $row['student_id'];?>)" class="btn btn-default btn-small">
-                                            <i class="icon-file-alt"></i> <?php echo get_phrase('marksheet');?>
-                                        </a>
+                                        
                                         <a  data-toggle="modal" href="#modal-form" onclick="modal('student_id_card',<?php echo $row['student_id'];?>)" class="btn btn-default btn-small">
                                             <i class="icon-credit-card"></i> <?php echo get_phrase('id_card');?>
                                         </a>
@@ -106,22 +111,6 @@
                                         
                                         
                                         
-                                        <!-- <a href="<?php echo base_url();?>index.php?enroll/student/<?php echo $class_id;?>/personal_profile/<?php echo $row['student_id'];?>"
-                                             class="btn btn-gray">
-                                                <i class="icon-wrench"></i> <?php echo get_phrase('personal_profile');?>
-                                        </a>
-                                        <a href="<?php echo base_url();?>index.php?enroll/student/<?php echo $class_id;?>/academic_result/<?php echo $row['student_id'];?>"
-                                             class="btn btn-gray">
-                                                <i class="icon-wrench"></i> <?php echo get_phrase('academic_result');?>
-                                        </a>
-                                        <a href="<?php echo base_url();?>index.php?enroll/student/<?php echo $class_id;?>/edit/<?php echo $row['student_id'];?>"
-                                            class="btn btn-gray">
-                                                <i class="icon-wrench"></i> <?php echo get_phrase('edit');?>
-                                        </a>
-                                        <a href="<?php echo base_url();?>index.php?enroll/student/<?php echo $class_id;?>/delete/<?php echo $row['student_id'];?>" onclick="return confirm('delete?')"
-                                             class="btn btn-red">
-                                                <i class="icon-trash"></i> <?php echo get_phrase('delete');?>
-                                        </a>-->
                                         
                                         
                                         
