@@ -22,7 +22,7 @@
             <div class="tab-pane  active" id="list">
 				<center>
                 	<br />
-                	<select name="class_id" onchange="window.location='<?php echo base_url();?>index.php?teacher/student/'+this.value">
+                	<select name="class_id" onchange="window.location='<?php echo base_url();?>index.php?enroll/student/'+this.value">
                     	<option value=""><?php echo get_phrase('select_a_class');?></option>
 						<?php 
                         $classes = $this->db->get('class')->result_array();
@@ -100,25 +100,25 @@
                                         <a  data-toggle="modal" href="#modal-form" onclick="modal('edit_student',<?php echo $row['student_id'];?>,<?php echo $class_id;?>)" class="btn btn-gray btn-small">
                                             <i class="icon-wrench"></i> <?php echo get_phrase('edit');?>
                                         </a>
-                                        <a  data-toggle="modal" href="#modal-delete" onclick="modal_delete('<?php echo base_url();?>index.php?teacher/student/<?php echo $class_id;?>/delete/<?php echo $row['student_id'];?>')" class="btn btn-red btn-small">
+                                        <a  data-toggle="modal" href="#modal-delete" onclick="modal_delete('<?php echo base_url();?>index.php?enroll/student/<?php echo $class_id;?>/delete/<?php echo $row['student_id'];?>')" class="btn btn-red btn-small">
                                             <i class="icon-trash"></i> <?php echo get_phrase('delete');?>
                                         </a>
                                         
                                         
                                         
-                                        <!-- <a href="<?php echo base_url();?>index.php?teacher/student/<?php echo $class_id;?>/personal_profile/<?php echo $row['student_id'];?>"
+                                        <!-- <a href="<?php echo base_url();?>index.php?enroll/student/<?php echo $class_id;?>/personal_profile/<?php echo $row['student_id'];?>"
                                              class="btn btn-gray">
                                                 <i class="icon-wrench"></i> <?php echo get_phrase('personal_profile');?>
                                         </a>
-                                        <a href="<?php echo base_url();?>index.php?teacher/student/<?php echo $class_id;?>/academic_result/<?php echo $row['student_id'];?>"
+                                        <a href="<?php echo base_url();?>index.php?enroll/student/<?php echo $class_id;?>/academic_result/<?php echo $row['student_id'];?>"
                                              class="btn btn-gray">
                                                 <i class="icon-wrench"></i> <?php echo get_phrase('academic_result');?>
                                         </a>
-                                        <a href="<?php echo base_url();?>index.php?teacher/student/<?php echo $class_id;?>/edit/<?php echo $row['student_id'];?>"
+                                        <a href="<?php echo base_url();?>index.php?enroll/student/<?php echo $class_id;?>/edit/<?php echo $row['student_id'];?>"
                                             class="btn btn-gray">
                                                 <i class="icon-wrench"></i> <?php echo get_phrase('edit');?>
                                         </a>
-                                        <a href="<?php echo base_url();?>index.php?teacher/student/<?php echo $class_id;?>/delete/<?php echo $row['student_id'];?>" onclick="return confirm('delete?')"
+                                        <a href="<?php echo base_url();?>index.php?enroll/student/<?php echo $class_id;?>/delete/<?php echo $row['student_id'];?>" onclick="return confirm('delete?')"
                                              class="btn btn-red">
                                                 <i class="icon-trash"></i> <?php echo get_phrase('delete');?>
                                         </a>-->
@@ -141,7 +141,7 @@
 			<!----CREATION FORM STARTS---->
 			<div class="tab-pane box" id="add" style="padding: 5px">
                 <div class="box-content">
-                	<?php echo form_open('teacher/student/create/' , array('class' => 'form-horizontal validatable', 'enctype' => 'multipart/form-data'));?>
+                	<?php echo form_open('enroll/student/create/' , array('class' => 'form-horizontal validatable', 'enctype' => 'multipart/form-data'));?>
                         <div class="padded">
                             <div class="control-group">
                                 <label class="control-label"><?php echo get_phrase('name');?></label>
@@ -272,7 +272,7 @@
 		</div>
 		<div class="box-content padded">
             <br />
-            <select name="class_id" onchange="window.location='<?php echo base_url();?>index.php?teacher/student/'+this.value">
+            <select name="class_id" onchange="window.location='<?php echo base_url();?>index.php?enroll/student/'+this.value">
                 <option value=""><?php echo get_phrase('select_a_class');?></option>
                 <?php 
                 $classes = $this->db->get('class')->result_array();
