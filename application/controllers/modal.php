@@ -23,6 +23,9 @@ class Modal extends CI_Controller {
 	
 	function popup($param1 = '' , $param2 = '' , $param3 = '')
 	{
+		// Me add
+		$this->load->model('m_teacher', '', true);
+
 		if($param1	==	'student_profile' )
 		{
 			$page_data['current_student_id']	=	$param2;
@@ -46,7 +49,11 @@ class Modal extends CI_Controller {
 		}
 		else if($param1	==	'edit_teacher')
 		{
-			$page_data['edit_data']	=	$this->db->get_where('teacher' , array('teacher_id'=>$param2))->result_array();
+			//$page_data['edit_data']	=	$this->db->get_where('teacher' , array('teacher_id'=>$param2))->result_array();
+			$page_data['edit_data'] = $this->m_teacher->get_teacher_view($param2);
+			$page_data['edit_education'] = $this->m_teacher->get_teacher_view_education_training($param2);
+			$page_data['edit_course'] = $this->m_teacher->get_teacher_view_education_course($param2);
+			$page_data['edit_history'] = $this->m_teacher->get_teacher_view_education_history($param2);
 		}
 		else if($param1	==	'add_parent')
 		{
@@ -103,7 +110,24 @@ class Modal extends CI_Controller {
 			$page_data['edit_data']	=	$this->db->get_where('noticeboard' , array('notice_id'=>$param2))->result_array();
 		}
 		
-		
+		// Me add
+       
+        $page_data['sex'] = $this->m_teacher->get_sex();
+        $page_data['marital'] = $this->m_teacher->get_marital();
+        $page_data['province'] = $this->m_teacher->get_province();
+        $page_data['district'] = $this->m_teacher->get_district();
+        $page_data['commune'] = $this->m_teacher->get_commune();
+        $page_data['employment_type'] = $this->m_teacher->get_employment_type();
+        $page_data['duty_type'] = $this->m_teacher->get_duty_type();
+        $page_data['duty_teaching'] = $this->m_teacher->get_duty_teaching();
+        $page_data['schedule'] = $this->m_teacher->get_schedule();
+        $page_data['general_education'] = $this->m_teacher->get_general_education();
+        $page_data['foreign_language'] = $this->m_teacher->get_foreign_language();
+        $page_data['foreign_language_level'] = $this->m_teacher->get_foreign_language_level();
+        $page_data['course_type'] = $this->m_teacher->get_course_type();
+        $page_data['teacher_exam'] = $this->m_teacher->get_teacher_exam();
+        $page_data['member_of_pro_association'] = $this->m_teacher->get_member_of_pro_association();
+        
 		
 		$page_data['page_name']		=	$param1;
 		$this->load->view('modal' ,$page_data);
