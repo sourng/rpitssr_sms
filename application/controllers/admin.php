@@ -64,8 +64,7 @@ class Admin extends CI_Controller
             $data['class_id']    = $this->input->post('class_id');
             $data['roll']        = $this->input->post('roll');
             $this->db->insert('student', $data);
-<<<<<<< HEAD
-=======
+
             //$data['class_id'] = $this->input->post('class_id');
 
 			$data['txt_family_kh']        = $this->input->post('txt_family_kh');
@@ -115,7 +114,7 @@ class Admin extends CI_Controller
 
             $this->db->insert('my_student', $data);
             $this->db->insert('my_student_course', $data1);
->>>>>>> c6182fe5eaea563cb86f67495017124897640daf
+
             $student_id = mysql_insert_id();
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $student_id . '.jpg');
             $this->email_model->account_opening_email('student', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
