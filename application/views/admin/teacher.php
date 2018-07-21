@@ -985,6 +985,7 @@ var i = 1;
 $(document).on('click','#btn-add-lang',function()
   {
     i++;
+    $('select').css('height','30px');
      $('#dynamic-lang').append('<tr class="row-lang" id="row-lang-'+i+'">\
                                     <td>\
                                         <select name="cbo_language[]" id="cbo_language" class="uniform" style="width: 100%">\
