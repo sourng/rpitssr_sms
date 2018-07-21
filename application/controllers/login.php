@@ -30,6 +30,8 @@ class Login extends CI_Controller
             redirect(base_url() . 'index.php?student/dashboard', 'refresh');
         if ($this->session->userdata('parent_login') == 1)
             redirect(base_url() . 'index.php?parents/dashboard', 'refresh');
+        if ($this->session->userdata('enroll_login') == 1)
+        redirect(base_url() . 'index.php?enroll/dashboard', 'refresh');
         
         
         $config = array(
@@ -61,6 +63,9 @@ class Login extends CI_Controller
                 redirect(base_url() . 'index.php?student/dashboard', 'refresh');
             if ($this->session->userdata('parent_login') == 1)
                 redirect(base_url() . 'index.php?parents/dashboard', 'refresh');
+            if ($this->session->userdata('enroll_login') == 1)
+            redirect(base_url() . 'index.php?enroll/dashboard', 'refresh');
+                
         }
         
     }
@@ -104,6 +109,16 @@ class Login extends CI_Controller
                 $this->session->set_userdata('name', $row->name);
                 $this->session->set_userdata('login_type', 'parent');
             }
+
+            if ($this->input->post('login_type') == 'enroll') {
+                $this->session->set_userdata('enroll_login', '1');
+                $this->session->set_userdata('enroll_id', $row->parent_id);
+                $this->session->set_userdata('name', $row->name);
+                $this->session->set_userdata('login_type', 'enroll');
+            }
+
+
+
             return TRUE;
         } else {
             $this->session->set_flashdata('flash_message', get_phrase('login_failed'));

@@ -6,6 +6,12 @@
         <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <style type="text/css">
+            table,tr,td{
+                padding: 5px;
+            }
+
+        </style>
 		<?php include 'includes.php';?>
         <title><?php echo $page_title;?> | <?php echo $system_title;?></title>
     </head>
