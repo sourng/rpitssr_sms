@@ -51,7 +51,6 @@ class Admin extends CI_Controller
         if ($this->session->userdata('admin_login') != 1)
             redirect('login', 'refresh');
         if ($param1 == 'create') {
-<<<<<<< HEAD
             $data['khname']        = $this->input->post('khname');
             $data['name']        = $this->input->post('name');
             $data['birthday']    = $this->input->post('birthday');
@@ -65,8 +64,6 @@ class Admin extends CI_Controller
             $data['class_id']    = $this->input->post('class_id');
             $data['roll']        = $this->input->post('roll');
             $this->db->insert('student', $data);
-=======
-
             //$data['class_id'] = $this->input->post('class_id');
 
 			$data['txt_family_kh']        = $this->input->post('txt_family_kh');
@@ -116,7 +113,6 @@ class Admin extends CI_Controller
 
             $this->db->insert('my_student', $data);
             $this->db->insert('my_student_course', $data1);
->>>>>>> 524621d282e5a5133b4f70a4ef6ada77f3a03601
             $student_id = mysql_insert_id();
 
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $image_id);
