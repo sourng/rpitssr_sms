@@ -3,6 +3,7 @@
 	<div class="box-header">
     
     	<!------CONTROL TABS START------->
+<<<<<<< HEAD
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item active" >
                     <a class="nav-link active" href="#list" role="tab" data-toggle="tab">
@@ -17,14 +18,25 @@
                 </li>
             </ul>
         <!------CONTROL TABS END------->
+=======
+		<ul class="nav nav-tabs nav-tabs-left">
+			<li class="active">
+            	<a href="#list" data-toggle="tab"><i class="icon-align-justify"></i> 
+					<?php echo get_phrase('student_list');?>
+                    	</a></li>
+			<li>
+            	<a href="#add" data-toggle="tab"><i class="icon-plus"></i>
+					<?php echo get_phrase('add_student');?>
+                    	</a></li>
+		</ul>
+    	<!------CONTROL TABS END------->
+>>>>>>> 08a3741c6001fed811bc182423d1ce8f7c291ee8
         
 	</div>
-	<div class="tab-content">
-
-        <!-- TABLE LISTING STARTS -->
-        <div role="tabpanel" class="tab-pane fade in active" id="list">
-            <div class="tab-pane box" style="padding: 5px">
-                <div class="box-content">
+	<div class="box-content">
+		<div class="tab-content">
+            <!----TABLE LISTING STARTS--->
+            <div class="tab-pane  active" id="list">
 				<center>
                 	<br /><?php echo get_phrase('Class');?>
                 	<select name="class_id" onchange="window.location='<?php echo base_url();?>index.php?admin/student/'+this.value">
@@ -164,6 +176,7 @@
                     </div>
                 </div>
                 <?php endif;?>
+<<<<<<< HEAD
                 </div>
             </div>
         </div>
@@ -623,6 +636,126 @@
 
 
     </div>
+=======
+			</div>
+            <!----TABLE LISTING ENDS--->
+            
+            
+			<!----CREATION FORM STARTS---->
+			<div class="tab-pane box" id="add" style="padding: 5px">
+                <div class="box-content">
+                	<?php echo form_open('admin/student/create/' , array('class' => 'form-horizontal validatable', 'enctype' => 'multipart/form-data'));?>
+                        <div class="padded">
+                            <div class="control-group">
+                                <label class="control-label"><?php echo get_phrase('ឈ្មោះខ្មែរ​');?></label>
+                                <div class="controls">
+                                    <input type="text" class="validate[required]" name="khname"/>
+                                </div>
+                            </div>
+				 <div class="control-group">
+                                <label class="control-label"><?php echo get_phrase('name');?></label>
+                                <div class="controls">
+                                    <input type="text" class="validate[required]" name="name"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><?php echo get_phrase('birthday');?></label>
+                                <div class="controls">
+                                    <input type="text" class="datepicker fill-up" name="birthday"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><?php echo get_phrase('sex');?></label>
+                                <div class="controls">
+                                    <select name="sex" class="uniform" style="width:100%;">
+                                    	<option value="male"><?php echo get_phrase('male');?></option>
+                                    	<option value="female"><?php echo get_phrase('female');?></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><?php echo get_phrase('address');?></label>
+                                <div class="controls">
+                                    <input type="text" class="" name="address"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><?php echo get_phrase('phone');?></label>
+                                <div class="controls">
+                                    <input type="text" class="" name="phone"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><?php echo get_phrase('email');?></label>
+                                <div class="controls">
+                                    <input type="text" class="" name="email"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><?php echo get_phrase('password');?></label>
+                                <div class="controls">
+                                    <input type="text" class="" name="password"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><?php echo get_phrase('father_name');?></label>
+                                <div class="controls">
+                                    <input type="text" class="" name="father_name"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><?php echo get_phrase('mother_name');?></label>
+                                <div class="controls">
+                                    <input type="text" class="" name="mother_name"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><?php echo get_phrase('class');?></label>
+                                <div class="controls">
+                                    <select name="class_id" class="uniform" style="width:100%;">
+                                    	<?php 
+										$classes = $this->db->get('class')->result_array();
+										foreach($classes as $row):
+										?>
+                                    		<option value="<?php echo $row['class_id'];?>">
+												<?php echo $row['name'];?>
+                                                    </option>
+                                        <?php
+										endforeach;
+										?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><?php echo get_phrase('roll');?></label>
+                                <div class="controls">
+                                    <input type="text" class="" name="roll"/>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"><?php echo get_phrase('photo');?></label>
+                                <div class="controls" style="width:210px;">
+                                    <input type="file" class="" name="userfile" id="imgInp" />
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label"></label>
+                                <div class="controls" style="width:210px;">
+                                    <img id="blah" src="<?php echo base_url();?>uploads/user.jpg" alt="your image" height="100" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-gray"><?php echo get_phrase('add_student');?></button>
+                        </div>
+                    <?php echo form_close();?>                
+                </div>                
+			</div>
+			<!----CREATION FORM ENDS--->
+            
+		</div>
+	</div>
+>>>>>>> 08a3741c6001fed811bc182423d1ce8f7c291ee8
 </div>
 <?php endif;?>
 <?php if($class_id == ""):?>
