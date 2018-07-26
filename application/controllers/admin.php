@@ -51,10 +51,9 @@ class Admin extends CI_Controller
         if ($this->session->userdata('admin_login') != 1)
             redirect('login', 'refresh');
         if ($param1 == 'create') {
-<<<<<<< HEAD
+
             $data['class_id']=$this->input->post('class_id');
 			$data['txt_family_kh'] = $this->input->post('txt_family_kh');
-=======
             $data['khname']        = $this->input->post('khname');
             $data['name']        = $this->input->post('name');
             $data['birthday']    = $this->input->post('birthday');
@@ -72,7 +71,6 @@ class Admin extends CI_Controller
             //$data['class_id'] = $this->input->post('class_id');
 
 			$data['txt_family_kh']        = $this->input->post('txt_family_kh');
->>>>>>> 08a3741c6001fed811bc182423d1ce8f7c291ee8
             $data['txt_first_kh']        = $this->input->post('txt_first_kh');
             $data['txt_family_en']    = $this->input->post('txt_family_en');
             $data['txt_first_en']         = $this->input->post('txt_first_en');
@@ -99,8 +97,6 @@ class Admin extends CI_Controller
             $image_id = uniqid() . '.jpg';
             $data['file_photo'] = $image_id;//$this->input->post('file_photo');
             $this->db->insert('my_student', $data);
-<<<<<<< HEAD
-
             $student_id = $this->db->insert_id();
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $image_id);
 
@@ -147,14 +143,12 @@ class Admin extends CI_Controller
             //$this->email_model->account_opening_email('student', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
            // redirect(base_url() . 'index.php?admin/student/' . $data['class_id'], 'refresh');
            redirect('admin/student/'.$data['class_id'],refresh);
-=======
             $this->db->insert('my_student_course', $data1);
 
             $student_id = mysql_insert_id();
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $student_id . '.jpg');
             $this->email_model->account_opening_email('student', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
             redirect(base_url() . 'index.php?admin/student/' . $data['class_id'], 'refresh');
->>>>>>> 08a3741c6001fed811bc182423d1ce8f7c291ee8
         }
 
 

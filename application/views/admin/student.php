@@ -3,7 +3,7 @@
 	<div class="box-header">
     
     	<!------CONTROL TABS START------->
-<<<<<<< HEAD
+
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item active" >
                     <a class="nav-link active" href="#list" role="tab" data-toggle="tab">
@@ -18,7 +18,7 @@
                 </li>
             </ul>
         <!------CONTROL TABS END------->
-=======
+
 		<ul class="nav nav-tabs nav-tabs-left">
 			<li class="active">
             	<a href="#list" data-toggle="tab"><i class="icon-align-justify"></i> 
@@ -30,7 +30,6 @@
                     	</a></li>
 		</ul>
     	<!------CONTROL TABS END------->
->>>>>>> 08a3741c6001fed811bc182423d1ce8f7c291ee8
         
 	</div>
 	<div class="box-content">
@@ -176,7 +175,6 @@
                     </div>
                 </div>
                 <?php endif;?>
-<<<<<<< HEAD
                 </div>
             </div>
         </div>
@@ -636,7 +634,6 @@
 
 
     </div>
-=======
 			</div>
             <!----TABLE LISTING ENDS--->
             
