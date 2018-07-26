@@ -221,8 +221,19 @@ class M_teacher extends CI_Model {
 	            return $data;
 	        }
 	}
-
-	function get_teacher_view($id ='') 
+	function get_teacher_view($id =''){
+		$this->db->select('*');    
+	    $this->db->from('teacher');       
+	    $this->db->join('tbl_sex','tbl_sex.sex_id = teacher.sex_id');       
+	    $query = $this->db->get();              
+	        if ($query->num_rows()>0) {
+	            foreach ($query->result_array() as $row) {
+	                $data[]=$row;
+	            }
+	            return $data;
+	        }
+	}
+	function get_teacher_view2($id ='') 
 	{  
 		$where = '';
 		$group = ' Group By tea.teacher_id';

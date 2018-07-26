@@ -105,9 +105,38 @@
                                             <!-- <a data-toggle="modal" href="#modal-form" onclick="modal('teacher_profile',<?php echo $row['teacher_id'];?>)" class="btn btn-default btn-sm">
                                                     <i class="icon-user"></i> <?php echo get_phrase('profile');?>
                                             </a> -->
-                                            <a data-toggle="modal" href="#modal-form" onclick="modal('edit_teacher',<?php echo $row['teacher_id'];?>)" class="btn btn-gray btn-sm">
+                                           <!--  <a data-toggle="modal" href="#modal-form" onclick="modal('edit_teacher',<?php echo $row['teacher_id'];?>)" class="btn btn-gray btn-sm">
                                                     <i class="icon-wrench"></i> <?php echo get_phrase('edit');?>
-                                            </a>
+                                            </a> -->
+
+                                                <div class="dropdown pull-left">
+                                                    <a href="#" class="btn btn-gray btn-sm dropdown-toggle" data-toggle="dropdown"><?php echo get_phrase('edit_teacher')?> <b class="caret"></b></a>
+                 
+                                                     <ul class="dropdown-menu">
+                                                        <li style="text-align: left;">
+                                                            <a href="<?php echo base_url('index.php?admin/teacherprofile/biographic_data/'.$row['teacher_id']) ?>">  
+                                                                <?php echo get_phrase('Biographic Data');?>
+                                                            </a>
+                                                              <a href="<?php echo base_url('index.php?admin/teacherprofile/employment_data/'.$row['teacher_id']) ?>"> 
+                                                                <?php echo get_phrase('Employment Data');?>
+                                                            </a>
+                                                              <a href="<?php echo base_url('index.php?admin/teacherprofile/education_training/'.$row['teacher_id']) ?>"> 
+                                                                <?php echo get_phrase('Education & Training');?>
+                                                            </a>
+                                                             <a href="<?php echo base_url('index.php?admin/teacherprofile/qualifications/'.$row['teacher_id']) ?>"> 
+                                                                 <?php echo get_phrase('Qualifications');?>
+                                                            </a>
+                                                             <a href="<?php echo base_url('index.php?admin/teacherprofile/employment_history/'.$row['teacher_id']) ?>"> 
+                                                                 <?php echo get_phrase('Employment History');?>
+                                                            </a>
+                                                           
+                                                        </li>
+                                                                           
+                                                    </ul>
+
+                                                </div>
+                                             
+                                          
                                             <a data-toggle="modal" href="#modal-delete" onclick="modal_delete('<?php echo base_url();?>index.php?admin/teacher/delete/<?php echo $row['teacher_id'];?>')" class="btn btn-red btn-sm">
                                                     <i class="icon-trash"></i> <?php echo get_phrase('delete');?>
                                             </a>
@@ -508,6 +537,7 @@
                         </div>
                          <div class="tab-pane fade" id="edu_data">
                             <div class="padded">
+                                <div style="border:solid 3px #e0e0e0;padding: 20px;">
                                 <table>
                                     <tbody>
                                         <tr>
@@ -601,7 +631,9 @@
 
                                     </tbody>
                                 </table>
-
+                            </div>
+                            <br>
+                             <div style="border:solid 3px #e0e0e0;padding: 20px;">
                                 <table id="dynamic-course">
                                     <tbody>
                                         <tr>
@@ -661,6 +693,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
                             </div>
                             <div class="form-actions">
                                 <a data-toggle="tab" onclick="tab('emp_data')" class="pull-left btn btn-default">

@@ -50,7 +50,7 @@ class Modal extends CI_Controller {
 		else if($param1	==	'edit_teacher')
 		{
 			//$page_data['edit_data']	=	$this->db->get_where('teacher' , array('teacher_id'=>$param2))->result_array();
-			$page_data['edit_data'] = $this->m_teacher->get_teacher_view($param2);
+			$page_data['edit_data'] = $this->m_teacher->get_teacher_view2($param2);
 			$page_data['edit_education'] = $this->m_teacher->get_teacher_view_education_training($param2);
 			$page_data['edit_course'] = $this->m_teacher->get_teacher_view_education_course($param2);
 			$page_data['edit_history'] = $this->m_teacher->get_teacher_view_education_history($param2);

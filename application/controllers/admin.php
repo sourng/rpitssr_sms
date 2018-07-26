@@ -572,6 +572,233 @@ class Admin extends CI_Controller
 
         $this->load->view('index', $page_data);
     }
+
+    function teacherprofile($param1 = '', $param2 = '', $param3 = ''){
+    	if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+
+        $page_data['page_name']  = 'teacher';
+        $page_data['page_title'] = get_phrase('manage_teacher');
+
+        if ($param1 == "biographic_data") {
+
+        	$page_data['page_name']  = 'teacher_biographic_data';
+       		$page_data['page_title'] = get_phrase('teacher_biographic_data'); 
+       		$page_data['edit_data'] = $this->m_teacher->get_teacher_view2($param2);
+
+        }elseif($param1 == "employment_data"){
+
+        	$page_data['page_name']  = 'teacher_employment_data';
+       		$page_data['page_title'] = get_phrase('teacher_employment_data');
+       		$page_data['edit_data'] = $this->m_teacher->get_teacher_view2($param2);
+			
+        	
+        }elseif($param1 == "education_training"){
+
+        	$page_data['page_name']  = 'teacher_education_training';
+       		$page_data['page_title'] = get_phrase('teacher_education_training'); 
+       		$page_data['edit_data'] = $this->m_teacher->get_teacher_view2($param2);
+			$page_data['edit_education'] = $this->m_teacher->get_teacher_view_education_training($param2);
+			$page_data['edit_course'] = $this->m_teacher->get_teacher_view_education_course($param2);
+
+        }elseif($param1 == "qualifications"){
+
+        	$page_data['page_name']  = 'teacher_qualifications';
+       		$page_data['page_title'] = get_phrase('teacher_qualifications'); 
+       		$page_data['edit_data'] = $this->m_teacher->get_teacher_view2($param2);
+
+        }elseif($param1 == "employment_history"){
+
+        	$page_data['page_name']  = 'teacher_employment_history';
+       		$page_data['page_title'] = get_phrase('teacher_employment_history');
+            $page_data['edit_data'] = $this->m_teacher->get_teacher_view2($param2);       		
+			$page_data['edit_history'] = $this->m_teacher->get_teacher_view_education_history($param2);
+
+        }elseif($param1 =='update'){
+
+            $teacher_id = $param3;
+
+        	if ($param2 == 'biographic_data') {        		
+       			
+       			$data['kh_fname'] = $this->input->post('kh_fname');
+	            $data['kh_lname'] = $this->input->post('kh_lname');
+	            $data['en_fname'] = $this->input->post('en_fname');
+	            $data['en_lname'] = $this->input->post('en_lname');
+	            $data['sex_id'] = $this->input->post('sex');
+	            $data['dob'] = $this->input->post('dob');
+	            $data['natuonal_id'] = $this->input->post('natuonal_id');
+	            $data['ins_staff_id'] = $this->input->post('ins_staff_id');
+	            $data['num_of_dep'] = $this->input->post('num_of_dep');
+	            $data['marital_id'] = $this->input->post('marital');
+	            $data['gov_off_id'] = $this->input->post('gov_off_id');
+	            $data['min_off_id'] = $this->input->post('min_off_id');
+	            $data['pob'] = $this->input->post('pob');
+	            $data['cur_resident'] = $this->input->post('cur_resident');
+	            $data['prov_id'] = $this->input->post('cbo_province');
+	            $data['dist_id'] = $this->input->post('cbo_district');
+	            $data['comm_id'] = $this->input->post('cbo_commune');
+	            $data['tel_num'] = $this->input->post('tel_num');
+	            $data['e_mail'] = $this->input->post('e_mail');
+	            //$data['password'] = $this->input->post('password');
+	            //$data[''] = $this->input->post('conf_password');
+	            $data['emer_cont_name'] = $this->input->post('emer_cont_name');
+	            $data['emer_cont_phone'] = $this->input->post('emer_cont_phone'); 
+
+	            $user_avertar1= $_FILES['user_avertar']['tmp_name']; 
+	            $user_avertar2= $this->input->post('user_avertar2');
+
+	           if($user_avertar1!=''){
+
+	           	 		$profile_image = uniqid(time(), true).'.jpg';
+	                    $data['user_avertar'] = $profile_image;           
+	                    move_uploaded_file($_FILES['user_avertar']['tmp_name'], './uploads/teacher_image/' . $profile_image); 
+	           }else{	           			
+	                    $data['user_avertar'] = $user_avertar2; 
+	           }
+	            $this->db->where('teacher_id', $teacher_id); 
+	            $this->db->update('teacher',$data);          
+	          
+	            redirect(base_url() . 'index.php?admin/teacherprofile/biographic_data/'.$teacher_id);
+            // End update to tbl_teachers
+
+        	}elseif ($param2 == 'employment_data') {
+
+                $data['emp_start_date'] = $this->input->post('emp_start_date');
+                $data['emp_end_date'] = $this->input->post('emp_end_date');
+                $data['emp_type_id'] = $this->input->post('emp_type');
+                $data['cont_value'] = $this->input->post('cont_value');
+                $data['duty_type_id'] = $this->input->post('duty_type');
+                $data['non_teach_staff_duty_id'] = $this->input->post('non_teach_staff_duty');
+                $data['staff_work_sch'] = $this->input->post('staff_work_sch');
+
+                $this->db->where('teacher_id', $teacher_id); 
+                $this->db->update('tbl_employment', $data);
+                redirect(base_url() . 'index.php?admin/teacherprofile/employment_data/'.$teacher_id);
+            // End update to tbl_employment
+
+            }elseif ($param2 == 'education_training') {
+                $table = array
+                    (                                
+                    'tbl_employment_course',
+                    'tbl_employment_education_training'
+                    );
+                $this->db->where('teacher_id', $teacher_id);
+                $this->db->delete($table);
+
+                $gen_edu_id = $this->input->post('cbo_general_education');
+                $fore_lang_id = $this->input->post('cbo_language');
+                $listen_level_id = $this->input->post('cbo_listening');
+                $speak_level_id = $this->input->post('cbo_speaking');
+                $read_level_id = $this->input->post('cbo_reading');
+                $wirte_level_id = $this->input->post('cbo_writing');
+                $data3 =array();
+                foreach ($fore_lang_id as $i => $name) {
+                    $data3[$i] = array(
+                        'teacher_id' => $teacher_id,
+                        'gen_edu_id' => $gen_edu_id,
+                        'fore_lang_id' => $fore_lang_id[$i],
+                        'listen_level_id' => $listen_level_id[$i],
+                        'speak_level_id' => $speak_level_id[$i],
+                        'read_level_id' => $read_level_id[$i],
+                        'wirte_level_id' => $wirte_level_id[$i],
+                    );
+                    $this->db->insert('tbl_employment_education_training', $data3[$i]);                    
+                }
+
+
+                // End save to tbl_employment_education_training
+                
+                $emp_cou_name = $this->input->post('course_program');
+                $tvet = $this->input->post('cbo_tvet');
+                $cour_type_id = $this->input->post('cbo_program_type');
+                $year = $this->input->post('year');
+                $school = $this->input->post('school_name');
+                $location = $this->input->post('location');
+                $data4 =array();           
+                  foreach ($emp_cou_name as $i => $name) {
+                    $data4[$i] = array(
+                        'teacher_id' => $teacher_id,
+                        'emp_cou_name' => $emp_cou_name[$i],
+                        'tvet' => $tvet[$i],
+                        'cour_type_id' => $cour_type_id[$i],
+                        'year' => $year[$i],
+                        'school' => $school[$i],
+                        'location' => $location[$i],
+                    );
+                $this->db->insert('tbl_employment_course', $data4[$i]);                    
+                }
+
+             // End save to tbl_employment_course
+            redirect(base_url() . 'index.php?admin/teacherprofile/education_training/'.$teacher_id);
+
+            }elseif ($param2 == 'qualifications') {
+
+                $data['tea_exam_id'] = $this->input->post('cbo_teacher_exam');
+                $data['tea_passed'] = $this->input->post('cbo_teacher_passed');
+                $data['mem_ass_id'] = $this->input->post('cbo_association');
+                $data['teaching'] = $this->input->post('teaching');
+                $data['other'] = $this->input->post('other');                
+                $this->db->where('teacher_id', $teacher_id);
+                $this->db->update('tbl_employment_qualification',$data);    
+                redirect(base_url() . 'index.php?admin/teacherprofile/qualifications/'.$teacher_id);
+
+                // End save to tbl_employment_qualification 
+
+             }elseif ($param2 == 'employment_history') {  
+                $table = array
+                    (                                
+                    'tbl_employment_history'
+                    );
+                $this->db->where('teacher_id', $teacher_id);
+                $this->db->delete($table);
+
+                $his_position = $this->input->post('his_position');
+                $his_start_date = $this->input->post('his_start_date');
+                $his_end_date = $this->input->post('his_end_date');
+                $his_organization = $this->input->post('his_organization');
+                $his_location = $this->input->post('his_location');
+                $data6 =array();
+                foreach ($his_position as $i => $name) {
+                    $data6[$i] = array(
+                        'teacher_id' => $teacher_id,
+                        'his_position' => $his_position[$i],
+                        'his_start_date' => $his_start_date[$i],
+                        'his_end_date' => $his_end_date[$i],
+                        'his_organization' => $his_organization[$i],
+                        'his_location' => $his_location[$i],
+                    );
+             $this->db->insert('tbl_employment_history', $data6[$i]);                    
+            }
+            // End save to tbl_employment_history
+                redirect(base_url() . 'index.php?admin/teacherprofile/employment_history/'.$teacher_id);
+            }
+
+
+        }
+
+
+
+
+    	
+        $page_data['sex'] = $this->m_teacher->get_sex();
+        $page_data['marital'] = $this->m_teacher->get_marital();
+        $page_data['province'] = $this->m_teacher->get_province();
+        $page_data['district'] = $this->m_teacher->get_district();
+        $page_data['commune'] = $this->m_teacher->get_commune();
+        $page_data['employment_type'] = $this->m_teacher->get_employment_type();
+        $page_data['duty_type'] = $this->m_teacher->get_duty_type();
+        $page_data['duty_teaching'] = $this->m_teacher->get_duty_teaching();
+        $page_data['schedule'] = $this->m_teacher->get_schedule();
+        $page_data['general_education'] = $this->m_teacher->get_general_education();
+        $page_data['foreign_language'] = $this->m_teacher->get_foreign_language();
+        $page_data['foreign_language_level'] = $this->m_teacher->get_foreign_language_level();
+        $page_data['course_type'] = $this->m_teacher->get_course_type();
+        $page_data['teacher_exam'] = $this->m_teacher->get_teacher_exam();
+        $page_data['member_of_pro_association'] = $this->m_teacher->get_member_of_pro_association();
+        $page_data['teachers'] = $this->m_teacher->get_teacher_view();
+
+    	$this->load->view('index', $page_data);
+    }
     
     /****MANAGE SUBJECTS*****/
     function subject($param1 = '', $param2 = '')

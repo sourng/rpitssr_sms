@@ -14,7 +14,7 @@
 	<ul class="nav nav-collapse collapse nav-collapse-primary">
     
         
-        <!------dashboard----->
+        <!--dashboard-->
 		<li class="<?php if($page_name == 'dashboard')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/dashboard" rel="tooltip" data-placement="right" 
@@ -25,7 +25,7 @@
 				</a>
 		</li>
         
-        <!------student----->
+        <!--student-->
 		<li class="<?php if($page_name == 'student')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/student" rel="tooltip" data-placement="right" 
@@ -36,7 +36,7 @@
 				</a>
 		</li>
         
-        <!------teacher----->
+        <!--teacher-->
 		<li class="<?php if($page_name == 'teacher')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/teacher" rel="tooltip" data-placement="right" 
@@ -46,8 +46,13 @@
 					<span><?php echo get_phrase('teacher');?></span>
 				</a>
 		</li>
+
+
+
+
+		
         
-        <!------parent----->
+        <!--parent-->
 		<li class="<?php if($page_name == 'parent')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/parent" rel="tooltip" data-placement="right" 
@@ -58,7 +63,7 @@
 				</a>
 		</li>
         
-        <!------subject----->
+        <!--subject-->
 		<li class="<?php if($page_name == 'subject')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/subject" rel="tooltip" data-placement="right" 
@@ -69,7 +74,7 @@
 				</a>
 		</li>
         
-        <!------classes----->
+        <!--classes-->
 		<li class="<?php if($page_name == 'class')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/classes" rel="tooltip" data-placement="right" 
@@ -80,7 +85,7 @@
 				</a>
 		</li>
         
-        <!------exam----->
+        <!--exam-->
 		<li class="<?php if($page_name == 'exam')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/exam" rel="tooltip" data-placement="right" 
@@ -91,7 +96,7 @@
 				</a>
 		</li>
         
-        <!------marks----->
+        <!--marks-->
 		<li class="<?php if($page_name == 'marks')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/marks" rel="tooltip" data-placement="right" 
@@ -102,7 +107,7 @@
 				</a>
 		</li>
         
-        <!------grade----->
+        <!--grade-->
 		<li class="<?php if($page_name == 'grade')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/grade" rel="tooltip" data-placement="right" 
@@ -113,7 +118,7 @@
 				</a>
 		</li>
         
-        <!------class routine----->
+        <!--class routine-->
 		<li class="<?php if($page_name == 'class_routine')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/class_routine" rel="tooltip" data-placement="right" 
@@ -124,7 +129,7 @@
 				</a>
 		</li>
         
-        <!------invoice----->
+        <!--invoice-->
 		<li class="<?php if($page_name == 'invoice')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/invoice" rel="tooltip" data-placement="right" 
@@ -135,7 +140,7 @@
 				</a>
 		</li>
         
-        <!------book----->
+        <!--book-->
 		<li class="<?php if($page_name == 'book')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/book" rel="tooltip" data-placement="right" 
@@ -146,7 +151,7 @@
 				</a>
 		</li>
         
-        <!------transport----->
+        <!--transport-->
 		<li class="<?php if($page_name == 'transport')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/transport" rel="tooltip" data-placement="right" 
@@ -157,7 +162,7 @@
 				</a>
 		</li>
         
-        <!------dormitory----->
+        <!--dormitory-->
 		<li class="<?php if($page_name == 'dormitory')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/dormitory" rel="tooltip" data-placement="right" 
@@ -168,7 +173,7 @@
 				</a>
 		</li>
         
-        <!------noticeboard----->
+        <!--noticeboard-->
 		<li class="<?php if($page_name == 'noticeboard')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/noticeboard" rel="tooltip" data-placement="right" 
@@ -183,7 +188,7 @@
 		
 
         
-        <!------system settings------>
+        <!--system settings-->
 		<li class="dark-nav <?php if(	$page_name == 'system_settings' 		|| 
 										$page_name == 'manage_language' 		|| 
 										$page_name == 'backup_restore' )echo 'active';?>">
@@ -222,7 +227,7 @@
             </ul>
 		</li>
 
-		<!------manage own profile--->
+		<!--manage own profile-->
 		<li class="<?php if($page_name == 'manage_profile')echo 'dark-nav active';?>">
 			<span class="glow"></span>
 				<a href="<?php echo base_url();?>index.php?admin/manage_profile" rel="tooltip" data-placement="right" 
