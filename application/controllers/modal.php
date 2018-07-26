@@ -40,7 +40,7 @@ class Modal extends CI_Controller {
 		}
 		else if($param1	==	'edit_student')
 		{
-			$page_data['edit_data']	=	$this->db->get_where('student' , array('student_id'=>$param2))->result_array();
+			$page_data['edit_data']	=	$this->db->get_where('my_student' , array('stu_id'=>$param2))->result_array();
 			$page_data['class_id']	=	$param3;
 		}
 		else if($param1	==	'teacher_profile')

@@ -51,6 +51,10 @@ class Admin extends CI_Controller
         if ($this->session->userdata('admin_login') != 1)
             redirect('login', 'refresh');
         if ($param1 == 'create') {
+<<<<<<< HEAD
+            $data['class_id']=$this->input->post('class_id');
+			$data['txt_family_kh'] = $this->input->post('txt_family_kh');
+=======
             $data['khname']        = $this->input->post('khname');
             $data['name']        = $this->input->post('name');
             $data['birthday']    = $this->input->post('birthday');
@@ -68,6 +72,7 @@ class Admin extends CI_Controller
             //$data['class_id'] = $this->input->post('class_id');
 
 			$data['txt_family_kh']        = $this->input->post('txt_family_kh');
+>>>>>>> 08a3741c6001fed811bc182423d1ce8f7c291ee8
             $data['txt_first_kh']        = $this->input->post('txt_first_kh');
             $data['txt_family_en']    = $this->input->post('txt_family_en');
             $data['txt_first_en']         = $this->input->post('txt_first_en');
@@ -79,6 +84,7 @@ class Admin extends CI_Controller
             $data['cbo_marital'] = $this->input->post('cbo_marital');
             $data['txt_travel_distance']    = $this->input->post('txt_travel_distance');
             $data['cbo_transport_method']        = $this->input->post('cbo_transport_method');
+            $data['txt_birth_place']= $this->input->post('txt_birth_place');
             $data['txt_resident_line1'] = $this->input->post('txt_resident_line1');
             $data['cbo_province'] = $this->input->post('cbo_province');
             $data['cbo_district'] = $this->input->post('cbo_district');
@@ -88,38 +94,71 @@ class Admin extends CI_Controller
             $data['txt_parent_email'] = $this->input->post('txt_parent_email');
             $data['rd_parent_address'] = $this->input->post('rd_parent_address');
             $data['cbo_general_education'] = $this->input->post('cbo_general_education');
-            $data['rd_enrol_ge'] = $this->input->post('rd_enrol_ge');            
-            $data['cbo_emp_status'] = $this->input->post('cbo_emp_status');
-            $data['txt_job_title'] = $this->input->post('txt_job_title');
-            $data['cbo_emp_remun'] = $this->input->post('cbo_emp_remun');
-            $data['txt_personal_income'] = $this->input->post('txt_personal_income');
-            $data['cbo_emp_type'] = $this->input->post('cbo_emp_type');
-            $data['txt_family_income'] = $this->input->post('txt_family_income');
-            $data['cbo_emp_prevent_reason'] = $this->input->post('cbo_emp_prevent_reason');
-            $data['rd_orphan'] = $this->input->post('rd_orphan');
-            $data['cbo_disability_type'] = $this->input->post('cbo_disability_type');
-            $data['cbo_disability_happen'] = $this->input->post('cbo_disability_happen');
-            $data['cbo_minority'] = $this->input->post('cbo_minority');
-    
-            $data1['txt_coursename'] = $this->input->post('txt_coursename');
-            $data1['cbo_istvet'] = $this->input->post('cbo_istvet');
-            $data1['cbo_program_type'] = $this->input->post('cbo_program_type');
-            $data1['txt_course_year'] = $this->input->post('txt_course_year');
-            $data1['txt_school_name'] = $this->input->post('txt_school_name');
-            $data1['txt_school_location'] = $this->input->post('txt_school_location');         
-
-                        
+            $data['rd_enrol_ge'] = $this->input->post('rd_enrol_ge');  
+            $data['txt_last_year_enrol'] = $this->input->post('txt_last_year_enrol');                           
             $image_id = uniqid() . '.jpg';
             $data['file_photo'] = $image_id;//$this->input->post('file_photo');
-
             $this->db->insert('my_student', $data);
+<<<<<<< HEAD
+
+            $student_id = $this->db->insert_id();
+            move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $image_id);
+
+            // Programe
+            $txt_coursename= $this->input->post('txt_coursename');
+            $cbo_istvet= $this->input->post('cbo_istvet');
+            $cbo_program_type= $this->input->post('cbo_program_type');
+            $txt_course_year= $this->input->post('txt_course_year');
+            $txt_school_name= $this->input->post('txt_school_name');
+            $txt_school_location= $this->input->post('txt_school_location'); 
+
+            $data4=array();
+            foreach ($txt_coursename as $i => $name) {
+                $data4[$i] = array(
+                    'stu_id' => $student_id,
+                    'txt_coursename' => $txt_coursename[$i],
+                    'cbo_istvet' => $cbo_istvet[$i],
+                    'cbo_program_type' => $cbo_program_type[$i],
+                    'txt_course_year' => $txt_course_year[$i],
+                    'txt_school_name' => $txt_school_name[$i],
+                    'txt_school_location' => $txt_school_location[$i],
+
+                        
+            );
+             $this->db->insert('my_student_course', $data4[$i]);
+            };
+            
+            //Info Work
+            $data3['stu_id'] = $student_id;
+            $data3['cbo_emp_status'] = $this->input->post('cbo_emp_status');            
+            $data3['txt_job_title'] = $this->input->post('txt_job_title');
+            $data3['cbo_emp_remun'] = $this->input->post('cbo_emp_remun');
+            $data3['txt_personal_income'] = $this->input->post('txt_personal_income');
+            $data3['cbo_emp_type'] = $this->input->post('cbo_emp_type');
+            $data3['txt_family_income'] = $this->input->post('txt_family_income');
+            $data3['cbo_emp_prevent_reason'] = $this->input->post('cbo_emp_prevent_reason');
+            $data3['rd_orphan'] = $this->input->post('rd_orphan');
+            $data3['cbo_disability_type'] = $this->input->post('cbo_disability_type');
+            $data3['cbo_disability_happen'] = $this->input->post('cbo_disability_happen');
+            $data3['cbo_minority'] = $this->input->post('cbo_minority');
+            $this->db->insert('my_student_work', $data3);
+            
+
+            //$this->email_model->account_opening_email('student', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
+           // redirect(base_url() . 'index.php?admin/student/' . $data['class_id'], 'refresh');
+           redirect('admin/student/'.$data['class_id'],refresh);
+=======
             $this->db->insert('my_student_course', $data1);
 
             $student_id = mysql_insert_id();
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/student_image/' . $student_id . '.jpg');
             $this->email_model->account_opening_email('student', $data['email']); //SEND EMAIL ACCOUNT OPENING EMAIL
             redirect(base_url() . 'index.php?admin/student/' . $data['class_id'], 'refresh');
+>>>>>>> 08a3741c6001fed811bc182423d1ce8f7c291ee8
         }
+
+
+
         if ($param2 == 'do_update') {
             $data['khname']        = $this->input->post('khname');
             $data['name']        = $this->input->post('name');
@@ -141,8 +180,8 @@ class Admin extends CI_Controller
             
             redirect(base_url() . 'index.php?admin/student/' . $param1, 'refresh');
         } else if ($param2 == 'edit') {
-            $page_data['edit_data'] = $this->db->get_where('student', array(
-                'student_id' => $param3
+            $page_data['edit_data'] = $this->db->get_where('my_student', array(
+                'stu_id' => $param3
             ))->result_array();
         } else if ($param2 == 'personal_profile') {
             $page_data['personal_profile']   = true;
@@ -157,7 +196,7 @@ class Admin extends CI_Controller
             redirect(base_url() . 'index.php?admin/student/' . $param1, 'refresh');
         }
         $page_data['class_id']   = $param1;
-        $page_data['students']   = $this->db->get_where('student', array(
+        $page_data['students']   = $this->db->get_where('my_student', array(
             'class_id' => $param1
         ))->result_array();
         $page_data['page_name']  = 'student';
