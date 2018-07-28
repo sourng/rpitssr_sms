@@ -63,7 +63,7 @@
                             <div class="form-actions">
                                
                                 <a href="javascript:(0)" id="btn-update-qua-data" class="pull-right btn btn-primary">
-                                    <?php echo get_phrase('Next');?>
+                                    <?php echo get_phrase('Update');?>
                                 </a>
                             </div>
 

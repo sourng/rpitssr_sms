@@ -86,7 +86,7 @@
                                             <?php echo $row['teacher_id'];?>
                                         </td>
                                         <td>
-                                            <div class="avatar"><img src="./uploads/teacher_image/<?php echo $row['user_avertar']; //echo $this->crud_model->get_image_url('teacher',$row['teacher_id']);?>" class="avatar-medium" /></div>
+                                            <div class="avatar1"><img style="width: 50px;height: 50px;border: solid 3px #cecece;" src="./uploads/teacher_image/<?php echo $row['user_avertar']; //echo $this->crud_model->get_image_url('teacher',$row['teacher_id']);?>"/></div>
                                         </td>
                                         <td>
                                             <?php echo $row['kh_fname'] .' '. $row['kh_lname'];?>
@@ -1014,10 +1014,11 @@ $("input#natuonal_id").keypress(number);
       }
   };
 
-var i = 1;
 $(document).on('click','#btn-add-lang',function()
   {
-    i++;
+   var i = $('.row-lang:last').attr('id');
+       i = parseInt(i.replace(/[^0-9]/g, '')) + 1;
+
     $('select').css('height','30px');
      $('#dynamic-lang').append('<tr class="row-lang" id="row-lang-'+i+'">\
                                     <td>\
@@ -1084,7 +1085,9 @@ $(document).on('click','#btn-add-lang',function()
 
 $(document).on('click','#btn-add-course',function()
   {
-    i++;
+    var i = $('.row-course:last').attr('id');
+        i = parseInt(i.replace(/[^0-9]/g, '')) + 1;
+
       $('#dynamic-course').append('<tr class="row-course" id="row-course-'+i+'">\
                                     <td>\
                                         <input type="text" name="course_program[]" id="course_program" style="width: 100%">\
@@ -1136,7 +1139,9 @@ $(document).on('click','#btn-add-course',function()
 
 $(document).on('click','#btn-add-history',function()
   {
-    i++;
+     var i = $('.row-history:last').attr('id');
+         i = parseInt(i.replace(/[^0-9]/g, '')) + 1;
+
       $('#dynamic-history').append('<tr class="row-history" id="row-history-'+i+'">\
                                         <td>\
                                             <input type="text" name="his_position[]" id="his_position" style="width: 100%">\

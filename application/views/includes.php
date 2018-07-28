@@ -9,6 +9,17 @@
         <script src="<?php echo base_url();?>template/js/ekattor.js" type="text/javascript"></script>
         <script src="<?php echo base_url();?>template/js/custom.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+    $(document).on("focus", ".datepicker", function(){
+        $(this).datepicker({
+        format: 'mm/dd/yyyy',
+        autoclose: true,
+        todayBtn: true,
+    });
+        $(this).datepicker('hide');
+    }); 
+</script>
+
         <style type="text/css">
             .label-box {
                 text-align: right;

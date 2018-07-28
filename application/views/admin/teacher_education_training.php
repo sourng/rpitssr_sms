@@ -43,8 +43,8 @@
                                             </td>
                                         </tr>
 
-                                        <?php foreach ($edit_education as $key): ?>
-                                            <tr class="row-lang" id="row-lang-<?php echo $key['emp_cou_id']?>">
+                                        <?php $i = 1; foreach ($edit_education as $key): ?>
+                                          <tr class="row-lang" id="row-lang-<?php echo $i?>">
                                             <td>
                                                 <select name="cbo_language[]" id="cbo_language" class="uniform">
                                                     <option value="0">Choose one</option>
@@ -89,11 +89,11 @@
                                             </td>
                                             <td style="width: 100px;">
                                                  <a href="javasript:(0)" class="btn btn-success" id="btn-add-lang"><i class="icon-plus"></i></a>
-                                                <a href="javasript:(0)" class="btn btn-danger" id="btn-remove-lang"  data-remove="<?php echo $key['edu_train_id'] ?>"><i class="icon-trash"></i></a>
+                                                <a href="javasript:(0)" class="btn btn-danger" id="btn-remove-lang"  data-remove="<?php echo $i ?>"><i class="icon-trash"></i></a>
                                             </td>
                                             <td> </td>
                                         </tr>
-                                        <?php endforeach; ?>
+                                        <?php $i++; endforeach; ?>
 
                                     </tbody>
                                 </table>
@@ -124,8 +124,8 @@
                                             <td>
                                                 <?php echo get_phrase('Add/Del')?> </td>
                                         </tr>
-                                        <?php foreach ($edit_course as $key):?>
-                                            <tr class="row-course" id="row-course-<?php echo $key['emp_cou_id']?>">
+                                        <?php $i = 1; foreach ($edit_course as $key):?>
+                                            <tr class="row-course" id="row-course-<?php echo $i?>">
                                             <td>
                                                 <input type="text" name="course_program[]" id="course_program" style="width: 100%" value="<?php echo $key['emp_cou_name'] ?>">
                                             </td>
@@ -157,10 +157,10 @@
                                             </td>
                                             <td>
                                                 <a href="javasript:(0)" class="btn btn-success" id="btn-add-course"><i class="icon-plus"></i></a>
-                                                <a href="javasript:(0)" class="btn btn-danger" id="btn-remove-course" data-remove="<?php echo $key['emp_cou_id']?>"><i class="icon-trash"></i></a>
+                                                <a href="javasript:(0)" class="btn btn-danger" id="btn-remove-course" data-remove="<?php echo $i?>"><i class="icon-trash"></i></a>
                                             </td>
                                         </tr>
-                                        <?php endforeach; ?>
+                                        <?php $i++; endforeach; ?>
                                     </tbody>
                                 </table>
                                 </div>
@@ -241,10 +241,13 @@ $('a#btn-update-edu-data').click(function(e){
     }
 })
 
-var i = 1;
+
+
 $(document).on('click','#btn-add-lang',function()
   {
-    i++;
+   var i = $('.row-lang:last').attr('id');
+       i = parseInt(i.replace(/[^0-9]/g, '')) + 1;
+     
     $('select').css('height','30px');
      $('#dynamic-lang').append('<tr class="row-lang" id="row-lang-'+i+'">\
                                     <td>\
@@ -311,7 +314,8 @@ $(document).on('click','#btn-add-lang',function()
 
 $(document).on('click','#btn-add-course',function()
   {
-    i++;
+     var i = $('.row-course:last').attr('id');
+         i = parseInt(i.replace(/[^0-9]/g, '')) + 1;
       $('#dynamic-course').append('<tr class="row-course" id="row-course-'+i+'">\
                                     <td>\
                                         <input type="text" name="course_program[]" id="course_program" style="width: 100%">\

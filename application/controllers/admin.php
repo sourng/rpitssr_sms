@@ -777,7 +777,7 @@ class Admin extends CI_Controller
 
                 // End save to tbl_employment_qualification 
 
-             }elseif ($param2 == 'employment_history') {  
+            }elseif ($param2 == 'employment_history') {  
                 $table = array
                     (                                
                     'tbl_employment_history'
